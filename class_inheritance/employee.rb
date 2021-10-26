@@ -1,6 +1,7 @@
-#require_relative "Manager"
+require_relative "manager"
+
 class Employee
-    attr_reader :salary
+    attr_reader :salary, :boss
     def initialize(name, title, salary, boss)
         @name = name
         @title = title
@@ -19,23 +20,7 @@ class Employee
     
 end
 
-class Manager < Employee
-    def initialize(name, title, salary,boss)
-        super
-        @reports = []
-    end
 
-    def bonus(multiplier)
-        salaries = []
-        @reports.each {|emp| salaries << emp.salary }
-        salaries.sum * multiplier
-    end
-
-    def add_report(employee)
-        @reports << employee
-    end
-
-end
 
 ned = Manager.new("Ned", "Founder", 1000000, nil)
 darren = Manager.new("Darren","TA Manager",78000,ned)
@@ -44,6 +29,6 @@ david = Employee.new("David", "TA", 10000,darren)
 
 
 
-p ned.bonus(5)
+p ned.bonus(5) #500000
 p darren.bonus(4)
 p david.bonus(3)
