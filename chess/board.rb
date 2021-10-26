@@ -14,13 +14,15 @@ class Board
     add_piece(Rook.new(:black, self, [2,0]), [2,0])
     end
 
-    def [](pos)
-        row, col = pos
+    def [](pos1, pos2)
+        row = pos1
+        col = pos2
         @grid[row][col]
     end
 
-    def []=(pos, val)
-        row, col = pos
+    def []=(pos1, pos2, val)
+        row = pos1
+        col = pos2
         @grid[row][col] = val
     end
 
@@ -39,4 +41,4 @@ class Board
 end
 
 board = Board.new
-p board[3][3]
+p board[2,0]
