@@ -1,14 +1,17 @@
 require_relative "piece"
+require_relative "slideable"
+require "byebug"
 class Board
     def initialize()
         @grid = Array.new(8){Array.new(8, nil)}
         @grid.each_with_index do |row, idx1|
             if idx1 == 0 || idx1 == 1 || idx1 == 6 || idx1 == 7
                 row.each_with_index do |ele, idx2|
-                    @grid[idx1][idx2] = Piece.new([idx1, idx2])
+                    @grid[idx1][idx2] = Piece.new(:white, self, [idx1, idx2])
                 end
             end
         end
+    add_piece(Rook.new(:black, self, [2,0]), [2,0])
     end
 
     def [](pos)
@@ -22,7 +25,8 @@ class Board
     end
 
     def add_piece(piece, pos)
-        @grid[pos] = piece
+        row, col = pos
+        @grid[row][col] = piece
     end
 
     def move_piece(start_pos, end_pos)
@@ -33,3 +37,6 @@ class Board
         self[start_pos] = nil
     end
 end
+
+board = Board.new
+p board[3][3]

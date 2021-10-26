@@ -1,13 +1,10 @@
-
 class Piece
     
     def initialize(color, board, pos)
-        @color = :white
+        @color = color
         @board = board
         @pos = pos 
     end
-
-    
 
     def inspect
         @color.inspect

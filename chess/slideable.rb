@@ -1,12 +1,16 @@
+require_relative "piece"
 module Slideable
     def moves
         moves = []
-        self.move_dirs
+        if self.move_dirs == "horizontal"
+            moves += horizontal_dirs
+        end
+
     moves
     end
 
     def horizontal_dirs
-        row, col = [3,3] #self.pos
+        row, col = self.pos
         horizontal_moves = []
         HORIZONTAL_DIRS.each do |dir|
             i = row
@@ -14,7 +18,7 @@ module Slideable
             idx, jdx = dir
             direction = []
             while (i < 7 && i >= 1) && (j < 7 && j >= 1 )
-                direction <<  i + idx, j + jdx
+                direction << [i + idx, j + jdx]
                 i += idx
                 j += jdx   
             end
@@ -39,13 +43,13 @@ module Slideable
 end
 
 class Rook < Piece
-include slideable
-    def initialize
+include Slideable
+    def initialize(color, board, pos)
         super
     end
 
     private
     def move_dirs
-
+        "horizontal"
     end
 end
