@@ -1,11 +1,15 @@
 
 class Piece
     
-    def initialize(pos)
-        #@color = nil
-        @pos = pos
+    def initialize(color, board, pos)
+        @color = :white
+        @board = board
+        @pos = pos 
     end
-    # def inspect
-    #     @
-    # end
+
+    
+
+    def inspect
+        @color.inspect
+    end
 end

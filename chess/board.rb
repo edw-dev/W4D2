@@ -9,16 +9,18 @@ class Board
                 end
             end
         end
-
     end
+
     def [](pos)
         row, col = pos
         @grid[row][col]
     end
+
     def []=(pos, val)
         row, col = pos
         @grid[row][col] = val
     end
+
     def add_piece(piece, pos)
         @grid[pos] = piece
     end
