@@ -2,15 +2,16 @@ require_relative "piece"
 require_relative "slideable"
 require "byebug"
 class Board
+    attr_reader :grid
     def initialize()
         @grid = Array.new(8){Array.new(8, nil)}
-        @grid.each_with_index do |row, idx1|
-            if idx1 == 0 || idx1 == 1 || idx1 == 6 || idx1 == 7
-                row.each_with_index do |ele, idx2|
-                    @grid[idx1][idx2] = Piece.new(:white, self, [idx1, idx2])
-                end
-            end
-        end
+        # @grid.each_with_index do |row, idx1|
+        #     if idx1 == 0 || idx1 == 1 || idx1 == 6 || idx1 == 7
+        #         row.each_with_index do |ele, idx2|
+        #             @grid[idx1][idx2] = Piece.new(:white, self, [idx1, idx2])
+        #         end
+        #     end
+        # end
     add_piece(Rook.new(:black, self, [2,0]), [2,0])
     end
 
@@ -40,5 +41,4 @@ class Board
     end
 end
 
-board = Board.new
-p board[2,0]
+
